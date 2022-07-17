@@ -19,3 +19,13 @@ class Assets {
 class AppColors {
   static const Color background = Colors.black;
 }
+
+class OurSocials {
+  static const String facebook =
+      'https://www.facebook.com/profile.php?id=100075428182018';
+  static const String instagram = 'https://www.instagram.com/btv_tamil_';
+  static const String sharechat =
+      'https://sharechat.com/profile/1303304509?d=n';
+  static const String twitter = 'https://twitter.com/BTvTAMIL?s=08';
+  static const String whatsapp = 'https://wa.me/+919659093848';
+}

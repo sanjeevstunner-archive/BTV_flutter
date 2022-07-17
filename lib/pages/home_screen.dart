@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:better_player/better_player.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -54,15 +55,28 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             children: [
-              SvgPicture.asset(Assets.whatsapp),
-              SvgPicture.asset(Assets.facebook),
-              SvgPicture.asset(Assets.instagram),
-              SvgPicture.asset(Assets.twitter),
-              SvgPicture.asset(Assets.sharechat),
+              appLauncher(icon: Assets.whatsapp, url: OurSocials.whatsapp),
+              appLauncher(icon: Assets.facebook, url: OurSocials.facebook),
+              appLauncher(icon: Assets.instagram, url: OurSocials.instagram),
+              appLauncher(icon: Assets.twitter, url: OurSocials.twitter),
+              appLauncher(icon: Assets.sharechat, url: OurSocials.sharechat),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  InkWell appLauncher({String url = '', String icon = ''}) {
+    return InkWell(
+      onTap: () {
+        AndroidIntent intent = AndroidIntent(
+          action: 'action_view',
+          data: url,
+        );
+        intent.launch();
+      },
+      child: SvgPicture.asset(icon),
     );
   }
 }
