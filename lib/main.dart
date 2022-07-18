@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
 
 import 'pages/home_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Wakelock.enable();
+  const MyApp();
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
