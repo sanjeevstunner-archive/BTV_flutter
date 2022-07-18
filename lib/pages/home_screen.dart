@@ -13,26 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late BetterPlayerController _betterPlayerController;
-  GlobalKey _betterPlayerKey = GlobalKey();
-
-  @override
-  void initState() {
-    BetterPlayerConfiguration betterPlayerConfiguration =
-        BetterPlayerConfiguration(
-      aspectRatio: 16 / 9,
-      fit: BoxFit.contain,
-    );
-    BetterPlayerDataSource dataSource = BetterPlayerDataSource(
-      BetterPlayerDataSourceType.network,
-      Constants.sourceVideoUrl,
-    );
-    _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
-    _betterPlayerController.setupDataSource(dataSource);
-    _betterPlayerController.setBetterPlayerGlobalKey(_betterPlayerKey);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,34 +20,49 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           const SizedBox(height: 8),
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: BetterPlayer(
-              controller: _betterPlayerController,
-              key: _betterPlayerKey,
+          Center(
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: BetterPlayer.network(
+                'http://139.99.96.85:1935/pollachi/myStream/playlist.m3u8',
+                betterPlayerConfiguration: const BetterPlayerConfiguration(
+                  aspectRatio: 16 / 9,
+                  allowedScreenSleep: false,
+                  autoPlay: true,
+                ),
+              ),
             ),
           ),
-          ElevatedButton(
-            child: const Text("Switch to mini player"),
-            onPressed: () {
-              _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
-            },
-          ),
-          Row(
-            children: [
-              appLauncher(icon: IconAssets.whatsapp, url: OurSocials.whatsapp),
-              appLauncher(icon: IconAssets.facebook, url: OurSocials.facebook),
-              appLauncher(icon: IconAssets.instagram, url: OurSocials.instagram),
-              appLauncher(icon: IconAssets.twitter, url: OurSocials.twitter),
-              appLauncher(icon: IconAssets.sharechat, url: OurSocials.sharechat),
-            ],
-          ),
+          socialsBar(),
         ],
       ),
     );
   }
 
-  InkWell appLauncher({String url = '', String icon = ''}) {
+  Row socialsBar() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        appLauncher(
+            icon: Image(image: AssetImage(IconAssets.whatsapp)),
+            url: OurSocials.whatsapp),
+        appLauncher(
+            icon: SvgPicture.asset(IconAssets.facebook),
+            url: OurSocials.facebook),
+        appLauncher(
+            icon: SvgPicture.asset(IconAssets.instagram),
+            url: OurSocials.instagram),
+        appLauncher(
+            icon: SvgPicture.asset(IconAssets.twitter),
+            url: OurSocials.twitter),
+        appLauncher(
+            icon: Image(image: AssetImage(IconAssets.sharechat)),
+            url: OurSocials.sharechat),
+      ],
+    );
+  }
+
+  InkWell appLauncher({String? url, Widget icon = const Text("Test")}) {
     return InkWell(
       onTap: () {
         AndroidIntent intent = AndroidIntent(
@@ -76,7 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
         );
         intent.launch();
       },
-      child: SvgPicture.asset(icon),
+      child: Container(
+        height: 70,
+        width: 70,
+        child: Expanded(child: icon),
+      ),
     );
   }
 }
