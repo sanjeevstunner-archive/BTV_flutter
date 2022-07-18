@@ -55,11 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             children: [
-              appLauncher(icon: Assets.whatsapp, url: OurSocials.whatsapp),
-              appLauncher(icon: Assets.facebook, url: OurSocials.facebook),
-              appLauncher(icon: Assets.instagram, url: OurSocials.instagram),
-              appLauncher(icon: Assets.twitter, url: OurSocials.twitter),
-              appLauncher(icon: Assets.sharechat, url: OurSocials.sharechat),
+              appLauncher(icon: IconAssets.whatsapp, url: OurSocials.whatsapp),
+              appLauncher(icon: IconAssets.facebook, url: OurSocials.facebook),
+              appLauncher(icon: IconAssets.instagram, url: OurSocials.instagram),
+              appLauncher(icon: IconAssets.twitter, url: OurSocials.twitter),
+              appLauncher(icon: IconAssets.sharechat, url: OurSocials.sharechat),
             ],
           ),
         ],

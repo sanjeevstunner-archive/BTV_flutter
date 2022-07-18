@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -6,14 +5,14 @@ class Constants {
       "http://hdserver.7starcloud.com:1935/atntv/live/playlist.m3u8";
 }
 
-class Assets {
+class IconAssets {
   static const String _images = 'assets/images/';
 
   static const String facebook = '${_images}Facebook.svg';
   static const String instagram = '${_images}Instagram.svg';
-  static const String sharechat = '${_images}Sharechat.svg';
+  static const String sharechat = '${_images}Sharechat.png';
   static const String twitter = '${_images}Twitter.svg';
-  static const String whatsapp = '${_images}Whatsapp.svg';
+  static const String whatsapp = '${_images}WhatsApp.png';
 }
 
 class AppColors {
