@@ -36,13 +36,9 @@ dependencies:
 dev_dependencies:
   android_intent_plus: ^3.1.1
   better_player: ^0.0.83
-  flutter_lints: ^2.0.0
   flutter_svg: ^1.1.1+1
   flutter_test:
     sdk: flutter
-  path_provider: ^2.0.10
-  video_player: ^2.4.5
-  visibility_detector: ^0.3.3
   wakelock: ^0.6.2
 
 # For information on the generic Dart part of this file, see the
