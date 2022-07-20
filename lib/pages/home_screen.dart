@@ -17,6 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
+      appBar: AppBar(
+        title: const Text(
+          'BTV Tamil',
+        ),
+        backgroundColor: AppColors.background,
+      ),
       body: Column(
         children: [
           const SizedBox(height: 8),
@@ -24,10 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: AspectRatio(
               aspectRatio: 16 / 9,
               child: BetterPlayer.network(
-                'http://139.99.96.85:1935/pollachi/myStream/playlist.m3u8',
+                Constants.sourceVideoUrl,
                 betterPlayerConfiguration: const BetterPlayerConfiguration(
                   aspectRatio: 16 / 9,
-                  allowedScreenSleep: false,
                   autoPlay: true,
                 ),
               ),

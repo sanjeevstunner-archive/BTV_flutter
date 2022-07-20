@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const String sourceVideoUrl =
+      "http://139.99.96.85:1935/pollachi/myStream/playlist.m3u8";
+  static const String testVideoUrl =
       "http://hdserver.7starcloud.com:1935/atntv/live/playlist.m3u8";
 }
 
